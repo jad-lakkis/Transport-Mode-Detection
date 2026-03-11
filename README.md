@@ -53,56 +53,52 @@ These folders contain the **original logs exactly as downloaded**, before any pr
 
 ## Expected Project Structure
 
-After cloning or copying the repository, your folder should look like this:
 fed-auprc-tmd/
 └── CellMob/
-├── zcodes/
-│
-└── Data/
-│
-├── 6400 KAUST/ # preprocessed KAUST dataset used by the experiments (codes available)
-│ ├── bus_test_kaust_standardized_6400windows.csv
-│ ├── bus_train_kaust_standardized.csv
-│ ├── car_test_kaust_standardized_6400windows.csv
-│ ├── car_train_kaust_standardized.csv
-│ ├── walk_test_kaust_standardized_6400windows.csv
-│ └── walk_train_kaust_standardized.csv
-│
-├── orignal_raw_data/ # ORIGINAL data you must download
-│ ├── bus_colored_kaust/
-│ ├── bus_jeddah/
-│ ├── bus_mekkah/
-│ ├── car_jeddah/
-│ ├── car_kaust/
-│ ├── car_kz/
-│ ├── car_mekkah/
-│ ├── train_mekkah/
-│ ├── walk_jeddah/
-│ ├── walk_kaust/
-│ ├── walk_kz/
-│ └── walk_mekkah/
-│
-├── zdata_unfinished/ # intermediate cleaned CSV files generated from raw logs
-│ ├── bus_colored_kaust_cleaned.csv
-│ ├── bus_jeddah_cleaned.csv
-│ ├── bus_mekkah_cleaned.csv
-│ ├── car_jeddah_cleaned.csv
-│ ├── car_kaust_cleaned.csv
-│ └── ...
-│
-└── data(raw_but_seperated)/
-├── zdata_train/ # standardized train files (80%)
-│ ├── walk_kaust_cleaned.csv
-│ ├── bus_colored_kaust_cleaned.csv
-│ └── car_kaust_cleaned.csv
-│
-└── zdata_test/ # standardized test files (20%)
-├── walk_kaust_cleaned.csv
-├── bus_colored_kaust_cleaned.csv
-└── car_kaust_cleaned.csv
-
-
-
+    ├── zcodes/
+    │
+    └── Data/
+        │
+        ├── 6400 KAUST/                         # preprocessed KAUST dataset used by the experiments (codes available)
+        │   ├── bus_test_kaust_standardized_6400windows.csv
+        │   ├── bus_train_kaust_standardized.csv
+        │   ├── car_test_kaust_standardized_6400windows.csv
+        │   ├── car_train_kaust_standardized.csv
+        │   ├── walk_test_kaust_standardized_6400windows.csv
+        │   └── walk_train_kaust_standardized.csv
+        │
+        ├── orignal_raw_data/                   # ORIGINAL data you must download
+        │   ├── bus_colored_kaust/
+        │   ├── bus_jeddah/
+        │   ├── bus_mekkah/
+        │   ├── car_jeddah/
+        │   ├── car_kaust/
+        │   ├── car_kz/
+        │   ├── car_mekkah/
+        │   ├── train_mekkah/
+        │   ├── walk_jeddah/
+        │   ├── walk_kaust/
+        │   ├── walk_kz/
+        │   └── walk_mekkah/
+        │
+        ├── zdata_unfinished/                   # intermediate cleaned CSV files generated from raw logs
+        │   ├── bus_colored_kaust_cleaned.csv
+        │   ├── bus_jeddah_cleaned.csv
+        │   ├── bus_mekkah_cleaned.csv
+        │   ├── car_jeddah_cleaned.csv
+        │   ├── car_kaust_cleaned.csv
+        │   └── ...
+        │
+        └── data(raw_but_seperated)/
+            ├── zdata_train/                    # standardized train files (80%)
+            │   ├── walk_kaust_cleaned.csv
+            │   ├── bus_colored_kaust_cleaned.csv
+            │   └── car_kaust_cleaned.csv
+            │
+            └── zdata_test/                     # standardized test files (20%)
+                ├── walk_kaust_cleaned.csv
+                ├── bus_colored_kaust_cleaned.csv
+                └── car_kaust_cleaned.csv
 
 The scripts must remain **inside the `CellMob` folder**, because the paths in the code are relative.
 
