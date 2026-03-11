@@ -43,12 +43,8 @@ All commands below assume a **Windows environment** using **PowerShell** or **Co
 
 After cloning the repository, you must place the **downloaded raw dataset** inside the project structure exactly as described below.
 
-⚠️ **Important:**  
+ **note:**  
 All **raw data that you download must be placed inside the folder**
-
-```
-CellMob/Data/orignal_raw_data/
-```
 
 Each subfolder inside `orignal_raw_data/` corresponds to a **specific city and transportation mode**.  
 These folders contain the **original logs exactly as downloaded**, before any preprocessing.
@@ -58,55 +54,54 @@ These folders contain the **original logs exactly as downloaded**, before any pr
 ## Expected Project Structure
 
 After cloning or copying the repository, your folder should look like this:
-
-```
 fed-auprc-tmd/
 └── CellMob/
-    ├── zcodes/  
-    │
-    └── Data/
-        │
-        ├── 6400 KAUST/                     # preprocessed KAUST dataset used by the experiments (codes available)
-        │   ├── bus_test_kaust_standardized_6400windows.csv
-        │   ├── bus_train_kaust_standardized.csv
-        │   ├── car_test_kaust_standardized_6400windows.csv
-        │   ├── car_train_kaust_standardized.csv
-        │   ├── walk_test_kaust_standardized_6400windows.csv
-        │   └── walk_train_kaust_standardized.csv
-        │
-        ├── orignal_raw_data/               # ORIGINAL data you must download
-        │   ├── bus_colored_kaust/
-        │   ├── bus_jeddah/
-        │   ├── bus_mekkah/
-        │   ├── car_jeddah/
-        │   ├── car_kaust/
-        │   ├── car_kz/
-        │   ├── car_mekkah/
-        │   ├── train_mekkah/
-        │   ├── walk_jeddah/
-        │   ├── walk_kaust/
-        │   ├── walk_kz/
-        │   └── walk_mekkah/
-        │
-        ├── zdata_unfinished/               # intermediate cleaned CSV files generated from raw logs
-        │   ├── bus_colored_kaust_cleaned.csv
-        │   ├── bus_jeddah_cleaned.csv
-        │   ├── bus_mekkah_cleaned.csv
-        │   ├── car_jeddah_cleaned.csv
-        │   ├── car_kaust_cleaned.csv
-        │   └── ...
-        │
-        └── data(raw_but_seperated)/
-            ├── zdata_train/                # standardized train files (80%)
-            │   ├── walk_kaust_cleaned.csv
-            │   ├── bus_colored_kaust_cleaned.csv
-            │   └── car_kaust_cleaned.csv
-            │
-            └── zdata_test/                 # standardized test files (20%)
-                ├── walk_kaust_cleaned.csv
-                ├── bus_colored_kaust_cleaned.csv
-                └── car_kaust_cleaned.csv
-```
+├── zcodes/
+│
+└── Data/
+│
+├── 6400 KAUST/ # preprocessed KAUST dataset used by the experiments (codes available)
+│ ├── bus_test_kaust_standardized_6400windows.csv
+│ ├── bus_train_kaust_standardized.csv
+│ ├── car_test_kaust_standardized_6400windows.csv
+│ ├── car_train_kaust_standardized.csv
+│ ├── walk_test_kaust_standardized_6400windows.csv
+│ └── walk_train_kaust_standardized.csv
+│
+├── orignal_raw_data/ # ORIGINAL data you must download
+│ ├── bus_colored_kaust/
+│ ├── bus_jeddah/
+│ ├── bus_mekkah/
+│ ├── car_jeddah/
+│ ├── car_kaust/
+│ ├── car_kz/
+│ ├── car_mekkah/
+│ ├── train_mekkah/
+│ ├── walk_jeddah/
+│ ├── walk_kaust/
+│ ├── walk_kz/
+│ └── walk_mekkah/
+│
+├── zdata_unfinished/ # intermediate cleaned CSV files generated from raw logs
+│ ├── bus_colored_kaust_cleaned.csv
+│ ├── bus_jeddah_cleaned.csv
+│ ├── bus_mekkah_cleaned.csv
+│ ├── car_jeddah_cleaned.csv
+│ ├── car_kaust_cleaned.csv
+│ └── ...
+│
+└── data(raw_but_seperated)/
+├── zdata_train/ # standardized train files (80%)
+│ ├── walk_kaust_cleaned.csv
+│ ├── bus_colored_kaust_cleaned.csv
+│ └── car_kaust_cleaned.csv
+│
+└── zdata_test/ # standardized test files (20%)
+├── walk_kaust_cleaned.csv
+├── bus_colored_kaust_cleaned.csv
+└── car_kaust_cleaned.csv
+
+
 
 
 The scripts must remain **inside the `CellMob` folder**, because the paths in the code are relative.
@@ -211,6 +206,100 @@ cross_entropy_approach.ipynb → binary baseline notebook for walk vs bus
 SOAP_approach.py → binary SOAP experiment for walk vs bus
 
 B. Walk vs Car
+python cross-entropy.py
+python soap_versionm.py
+
+cross-entropy.py → binary baseline for walk vs car
+
+soap_versionm.py → binary SOAP version for walk vs car
+
+# CellMob Setup and Run Order
+
+## 5. Activate the Virtual Environment
+
+PowerShell
+venv\\Scripts\\Activate.ps1
+
+Command Prompt
+venv\\Scripts\\activate.bat
+
+
+cd path\\to\\CellMob
+
+
+# 6 . Install Dependencies
+
+First upgrade pip:
+
+python -m pip install --upgrade pip
+
+Then install dependencies:
+
+pip install -r requirements.txt
+
+
+# 7. What You Should Do Next
+
+Go to the code folder first, then run the scripts in this order.
+
+## 1) Data extraction / preprocessing
+
+Run these first:
+
+python extracting_data1.py
+python 6400_KAUST.py
+python standardize_and_split.py
+
+extracting_data1.py → initial data extraction / preparation
+
+6400_KAUST.py → prepares the 6400 KAUST version of the data
+
+standardize_and_split.py → standardizes the features and creates the train/test split for KAUST data
+
+
+2)  model experiments
+
+A. 20% setting (80/20 split)
+
+python RNN_cross_entropy_KAUST.py
+python RNN_kaust_soap_ovr.py
+python RNN_soap_updated.py
+python RNN_soap_updated2.py
+
+RNN_cross_entropy_KAUST.py → baseline RNN with cross-entropy
+
+RNN_kaust_soap_ovr.py → SOAP / AUPRC-oriented one-vs-rest experiment
+
+RNN_soap_updated.py → updated SOAP variant
+
+RNN_soap_updated2.py → second updated SOAP variant
+
+
+B. Full 6400 setting
+
+python cross_entropy.py
+python soap.py
+
+cross_entropy.py → baseline 3-class cross-entropy experiment on the 6400 setup
+
+soap.py → 3-class SOAP / AUPRC-oriented experiment on the 6400 setup
+
+
+3) Binary comparison experiments
+
+Run these after the main 3-class experiments.
+
+
+A. Walk vs Bus
+
+Run:
+
+cross_entropy_approach.ipynb → binary baseline notebook for walk vs bus
+SOAP_approach.py → binary SOAP experiment for walk vs bus
+
+
+B. Walk vs Car
+
 python cross-entropy.py
 python soap_versionm.py
 
