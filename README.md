@@ -52,7 +52,11 @@ These folders contain the **original logs exactly as downloaded**, before any pr
 ---
 
 ## Expected Project Structure
+## Expected Project Structure
 
+After cloning or copying the repository, your folder should look like this:
+
+```text
 fed-auprc-tmd/
 └── CellMob/
     ├── zcodes/
@@ -99,6 +103,7 @@ fed-auprc-tmd/
                 ├── walk_kaust_cleaned.csv
                 ├── bus_colored_kaust_cleaned.csv
                 └── car_kaust_cleaned.csv
+```
 
 The scripts must remain **inside the `CellMob` folder**, because the paths in the code are relative.
 
@@ -135,93 +140,7 @@ venv\Scripts\activate.bat
 
 ```powershell
 cd path\to\CellMob
-
-
-# 6 . Install Dependencies
-
-First upgrade pip:
-
-python -m pip install --upgrade pip
-
-Then install dependencies:
-
-pip install -r requirements.txt
-
-
-# 7. What You Should Do Next
-
-Go to the code folder first, then run the scripts in this order.
-
-## 1) Data extraction / preprocessing
-Run these first:
-
-python extracting_data1.py
-python 6400_KAUST.py
-python standardize_and_split.py
-
-extracting_data1.py → initial data extraction / preparation
-
-6400_KAUST.py → prepares the 6400 KAUST version of the data
-
-standardize_and_split.py → standardizes the features and creates the train/test split for KAUST data
-
-2)  model experiments
-
-A. 20% setting (80/20 split)
-
-python RNN_cross_entropy_KAUST.py
-python RNN_kaust_soap_ovr.py
-python RNN_soap_updated.py
-python RNN_soap_updated2.py
-
-RNN_cross_entropy_KAUST.py → baseline RNN with cross-entropy
-
-RNN_kaust_soap_ovr.py → SOAP / AUPRC-oriented one-vs-rest experiment
-
-RNN_soap_updated.py → updated SOAP variant
-
-RNN_soap_updated2.py → second updated SOAP variant
-
-B. Full 6400 setting
-python cross_entropy.py
-python soap.py
-
-cross_entropy.py → baseline 3-class cross-entropy experiment on the 6400 setup
-
-soap.py → 3-class SOAP / AUPRC-oriented experiment on the 6400 setup
-
-3) Binary comparison experiments
-
-Run these after the main 3-class experiments.
-
-A. Walk vs Bus
-
-Run:
-
-cross_entropy_approach.ipynb → binary baseline notebook for walk vs bus
-SOAP_approach.py → binary SOAP experiment for walk vs bus
-
-B. Walk vs Car
-python cross-entropy.py
-python soap_versionm.py
-
-cross-entropy.py → binary baseline for walk vs car
-
-soap_versionm.py → binary SOAP version for walk vs car
-
-# CellMob Setup and Run Order
-
-## 5. Activate the Virtual Environment
-
-PowerShell
-venv\\Scripts\\Activate.ps1
-
-Command Prompt
-venv\\Scripts\\activate.bat
-
-
-cd path\\to\\CellMob
-
+```
 
 # 6 . Install Dependencies
 
@@ -233,74 +152,78 @@ Then install dependencies:
 
 pip install -r requirements.txt
 
-
 # 7. What You Should Do Next
 
 Go to the code folder first, then run the scripts in this order.
+
+---
 
 ## 1) Data extraction / preprocessing
 
 Run these first:
 
+```bash
 python extracting_data1.py
 python 6400_KAUST.py
 python standardize_and_split.py
+```
 
-extracting_data1.py → initial data extraction / preparation
+- extracting_data1.py → initial data extraction / preparation  
+- 6400_KAUST.py → prepares the 6400 KAUST version of the data  
+- standardize_and_split.py → standardizes the features and creates the train/test split for KAUST data  
 
-6400_KAUST.py → prepares the 6400 KAUST version of the data
+---
 
-standardize_and_split.py → standardizes the features and creates the train/test split for KAUST data
+## 2) Model experiments
 
+### A. 20% setting (80/20 split)
 
-2)  model experiments
-
-A. 20% setting (80/20 split)
-
+```bash
 python RNN_cross_entropy_KAUST.py
 python RNN_kaust_soap_ovr.py
 python RNN_soap_updated.py
 python RNN_soap_updated2.py
+```
 
-RNN_cross_entropy_KAUST.py → baseline RNN with cross-entropy
+- RNN_cross_entropy_KAUST.py → baseline RNN with cross-entropy  
+- RNN_kaust_soap_ovr.py → SOAP / AUPRC-oriented one-vs-rest experiment  
+- RNN_soap_updated.py → updated SOAP variant  
+- RNN_soap_updated2.py → second updated SOAP variant  
 
-RNN_kaust_soap_ovr.py → SOAP / AUPRC-oriented one-vs-rest experiment
+### B. Full 6400 setting
 
-RNN_soap_updated.py → updated SOAP variant
-
-RNN_soap_updated2.py → second updated SOAP variant
-
-
-B. Full 6400 setting
-
+```bash
 python cross_entropy.py
 python soap.py
+```
 
-cross_entropy.py → baseline 3-class cross-entropy experiment on the 6400 setup
+- cross_entropy.py → baseline 3-class cross-entropy experiment on the 6400 setup  
+- soap.py → 3-class SOAP / AUPRC-oriented experiment on the 6400 setup  
 
-soap.py → 3-class SOAP / AUPRC-oriented experiment on the 6400 setup
+---
 
+## 3) Binary comparison experiments
 
-3) Binary comparison experiments
+Run these **after the main 3-class experiments**.
 
-Run these after the main 3-class experiments.
-
-
-A. Walk vs Bus
+### A. Walk vs Bus
 
 Run:
 
-cross_entropy_approach.ipynb → binary baseline notebook for walk vs bus
-SOAP_approach.py → binary SOAP experiment for walk vs bus
+```bash
+cross_entropy_approach.ipynb
+SOAP_approach.py
+```
 
+- cross_entropy_approach.ipynb → binary baseline notebook for walk vs bus  
+- SOAP_approach.py → binary SOAP experiment for walk vs bus  
 
-B. Walk vs Car
+### B. Walk vs Car
 
+```bash
 python cross-entropy.py
 python soap_versionm.py
+```
 
-cross-entropy.py → binary baseline for walk vs car
-
-soap_versionm.py → binary SOAP version for walk vs car
-
-
+- cross-entropy.py → binary baseline for walk vs car  
+- soap_versionm.py → binary SOAP version for walk vs car  
