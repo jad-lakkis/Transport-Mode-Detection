@@ -4,3 +4,7 @@ Data/
 CellMob/zcodes/models/20%/outputs_local_only_models/
 CellMob/zcodes/models/20%/local model KAUST/outputs_local_only_models
 PNG IMAGES/
+outputs_federated_models/
+outputs_cross_city_models/
+dummy.py
+outputs/

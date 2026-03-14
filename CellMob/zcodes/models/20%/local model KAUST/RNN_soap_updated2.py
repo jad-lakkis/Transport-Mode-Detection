@@ -113,12 +113,12 @@ TEST_FILES = {
     "car": TEST_DIR / "car_kaust_cleaned.csv",
 }
 
-GAMMA_LIST = [0.1, 0.2]
-MARGIN_LIST = [0.6, 0.7]
+GAMMA_LIST = [0.2]
+MARGIN_LIST = [0.7]
 
 FIXED_WALK_SAMPLING = 0.80
 FIXED_BUS_SAMPLING = 0.15
-CAR_SAMPLING_LIST = [0.25, 0.30]
+CAR_SAMPLING_LIST = [0.30]
 
 
 def time_to_seconds(t) -> float:
