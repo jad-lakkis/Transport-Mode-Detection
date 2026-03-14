@@ -227,3 +227,113 @@ python soap_versionm.py
 
 - cross-entropy.py → binary baseline for walk vs car  
 - soap_versionm.py → binary SOAP version for walk vs car  
+
+
+8. Centralized Model
+
+In addition to the KAUST-only experiments, a centralized multi-city model was also implemented.
+
+The centralized model combines training data from multiple cities into a single dataset. 
+This model has access to all training windows and therefore represents the best-case 
+performance scenario when privacy constraints are ignored.
+
+Cities used in the centralized setup:
+
+- KAUST
+- Jeddah
+- Mekkah
+
+The centralized training script is:
+
+Centralized_GLOBAL_model.py
+
+What this script does:
+
+1. Loads the training datasets from each city
+2. Merges them into a single combined dataset
+3. Trains an RNN classifier using cross-entropy loss
+4. Evaluates the model on the combined test set
+
+Metrics reported include:
+
+- Confusion Matrix
+- Precision–Recall curves
+- AP / AUPRC per class
+- Macro AUPRC
+
+The centralized model serves as the reference performance that federated learning will be compared against.
+
+
+
+9. Local City Models
+
+Before running federated learning, local models were trained independently on each city 
+to verify that the architecture works well within each environment.
+
+Folders:
+
+local model KAUST/
+local model Jeddah/
+local model Makkah/
+
+Each folder contains scripts that train an RNN model using only that city's data.
+
+This step ensures:
+
+- the model can learn the transport patterns of each city
+- the preprocessing pipeline works correctly
+- the model converges before federated aggregation begins
+
+
+
+10. Federated Learning Experiments
+
+Federated learning experiments are located inside:
+
+fedL/
+
+and are executed using:
+
+FED_learning.py
+
+In addtion to 
+feddd.py in FedL/
+
+
+In the federated setup, each city acts as a separate client:
+
+- Client 1: KAUST
+- Client 2: Jeddah
+- Client 3: Mekkah
+
+Each client:
+
+1. trains a local RNN model using its own private dataset
+2. does not share raw data
+3. only sends model parameters (weights) to the server
+
+The server performs Federated Averaging (FedAvg) to update the global model.
+
+
+
+11. Final Comparison
+
+The following approaches are compared in this project:
+
+- Cross-entropy baseline
+- SOAP / AUPRC optimization
+- Centralized multi-city model
+- Federated learning model
+
+Evaluation focuses on:
+
+- AP / AUPRC per class
+- Macro AUPRC
+- Confusion matrices
+- Precision–Recall curves
+
+This allows analyzing:
+
+1. whether AUPRC-oriented optimization improves minority class detection
+2. the performance gap between centralized learning and federated learning
+3. the trade-off between privacy preservation and model performance
