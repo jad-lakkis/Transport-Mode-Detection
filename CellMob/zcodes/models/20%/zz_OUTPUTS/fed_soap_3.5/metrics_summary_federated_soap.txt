@@ -1,0 +1,176 @@
+==================== FEDERATED SOAP RESULTS ====================
+Overall Accuracy: 0.723689
+Macro Precision: 0.690452
+Macro Recall: 0.609157
+Macro F1-score: 0.622204
+Macro AP / Macro AUPRC: 0.658983
+
+AP / AUPRC per class:
+ walk | AP: 0.860497
+  bus | AP: 0.470179
+  car | AP: 0.646274
+
+Best validation AP after federated BCE pretraining:
+ walk | BCE Val AP: 0.829777
+  bus | BCE Val AP: 0.542971
+  car | BCE Val AP: 0.722934
+
+Best validation AP after federated APLoss/SOAP:
+ walk | APLoss Val AP: 0.856652
+  bus | APLoss Val AP: 0.561797
+  car | APLoss Val AP: 0.693379
+
+Per-class classification metrics:
+ walk | Precision=0.761813 | Recall=0.960729 | F1=0.849786 | One-vs-Rest Accuracy=0.810850 | Support=78990
+  bus | Precision=0.506595 | Recall=0.475103 | F1=0.490344 | One-vs-Rest Accuracy=0.821010 | Support=25706
+  car | Precision=0.802948 | Recall=0.391638 | F1=0.526483 | One-vs-Rest Accuracy=0.815517 | Support=37144
+
+Confusion Matrix [rows=true, cols=pred]:
+[[75888  2322   780]
+ [10703 12213  2790]
+ [13024  9573 14547]]
+
+TP / FP / FN / TN per class:
+ walk | TP=75888 | FP=23727 | FN=3102 | TN=39123 | Support=78990
+  bus | TP=12213 | FP=11895 | FN=13493 | TN=104239 | Support=25706
+  car | TP=14547 | FP=3570 | FN=22597 | TN=101126 | Support=37144
+
+Client training sample counts:
+  kaust | train_windows=261287 | val_windows=46110 | test_windows=76718
+ jeddah | train_windows=108358 | val_windows=19123 | test_windows=31822
+ mekkah | train_windows=113689 | val_windows=20063 | test_windows=33300
+
+Training time (seconds):
+ walk | BCE=434.09 | APLoss/SOAP=1432.03
+  bus | BCE=443.47 | APLoss/SOAP=1128.39
+  car | BCE=479.42 | APLoss/SOAP=983.10
+
+BCE round losses:
+[walk]
+Round 01: 0.433534
+Round 02: 0.284567
+Round 03: 0.244275
+Round 04: 0.209436
+Round 05: 0.188653
+Round 06: 0.173836
+Round 07: 0.161813
+Round 08: 0.152447
+Round 09: 0.145030
+Round 10: 0.139888
+Round 11: 0.136045
+Round 12: 0.130428
+Round 13: 0.126583
+Round 14: 0.124861
+Round 15: 0.122299
+Round 16: 0.118768
+Round 17: 0.118407
+Round 18: 0.113136
+Round 19: 0.111611
+Round 20: 0.109849
+[bus]
+Round 01: 0.531492
+Round 02: 0.406029
+Round 03: 0.344326
+Round 04: 0.307403
+Round 05: 0.285675
+Round 06: 0.269071
+Round 07: 0.251768
+Round 08: 0.232796
+Round 09: 0.221723
+Round 10: 0.215922
+Round 11: 0.210369
+Round 12: 0.209068
+Round 13: 0.204930
+Round 14: 0.196997
+Round 15: 0.191528
+Round 16: 0.205507
+Round 17: 0.205600
+Round 18: 0.182593
+Round 19: 0.178699
+Round 20: 0.198856
+[car]
+Round 01: 0.528340
+Round 02: 0.398579
+Round 03: 0.363368
+Round 04: 0.334621
+Round 05: 0.312892
+Round 06: 0.296059
+Round 07: 0.282338
+Round 08: 0.269062
+Round 09: 0.261423
+Round 10: 0.245903
+Round 11: 0.232821
+Round 12: 0.217203
+Round 13: 0.209618
+Round 14: 0.203109
+Round 15: 0.220917
+Round 16: 0.195042
+Round 17: 0.202885
+Round 18: 0.193855
+Round 19: 0.192633
+Round 20: 0.187805
+
+APLoss round losses:
+[walk]
+Round 01: -0.004606
+Round 02: -0.003379
+Round 03: -0.003546
+Round 04: -0.003211
+Round 05: -0.002861
+Round 06: -0.003011
+Round 07: -0.002942
+Round 08: -0.002578
+Round 09: -0.002614
+Round 10: -0.002223
+Round 11: -0.002482
+Round 12: -0.002473
+Round 13: -0.002406
+Round 14: -0.002424
+Round 15: -0.002167
+Round 16: -0.002272
+Round 17: -0.002225
+Round 18: -0.002529
+Round 19: -0.002021
+Round 20: -0.002358
+[bus]
+Round 01: -0.001904
+Round 02: -0.001845
+Round 03: -0.001521
+Round 04: -0.001241
+Round 05: -0.001060
+Round 06: -0.001976
+Round 07: -0.001780
+Round 08: -0.001216
+Round 09: -0.001666
+Round 10: -0.001718
+Round 11: -0.001676
+Round 12: -0.001401
+Round 13: -0.001390
+Round 14: -0.001046
+Round 15: -0.001673
+Round 16: -0.001889
+Round 17: -0.001868
+Round 18: -0.002201
+Round 19: -0.001552
+Round 20: -0.001684
+[car]
+Round 01: -0.008916
+Round 02: -0.014218
+Round 03: -0.012115
+Round 04: -0.011474
+Round 05: -0.013839
+Round 06: -0.010685
+Round 07: -0.008897
+Round 08: -0.007613
+Round 09: -0.009081
+Round 10: -0.011411
+Round 11: -0.014776
+Round 12: -0.009656
+Round 13: -0.008756
+Round 14: -0.009757
+Round 15: -0.010488
+Round 16: -0.018966
+Round 17: -0.014977
+Round 18: -0.011269
+Round 19: -0.010950
+Round 20: -0.014274

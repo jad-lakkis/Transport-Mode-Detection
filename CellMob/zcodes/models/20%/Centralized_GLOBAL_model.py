@@ -44,7 +44,7 @@ RUN_OUTPUT_DIR = OUTPUT_ROOT / "kaust_jeddah_mekkah_ce_baseline"
 RUN_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 WINDOW_SIZE = 5
-MAX_WINDOW_SPAN_SECONDS = 3.5
+MAX_WINDOW_SPAN_SECONDS = 3.5 
 BATCH_SIZE = 64
 HIDDEN_SIZE = 64
 NUM_LAYERS = 1

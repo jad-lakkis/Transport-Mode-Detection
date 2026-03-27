@@ -1,0 +1,41 @@
+==================== CENTRALIZED SOAP RESULTS ====================
+Overall Accuracy: 0.905175
+Macro Precision: 0.873586
+Macro Recall: 0.887204
+Macro F1-score: 0.880006
+Macro AP / Macro AUPRC: 0.940424
+
+AP / AUPRC per class:
+ walk | AP: 0.993530
+  bus | AP: 0.896577
+  car | AP: 0.931167
+
+Best validation AP after BCE pretraining:
+ walk | BCE Val AP: 0.999150
+  bus | BCE Val AP: 0.931651
+  car | BCE Val AP: 0.965431
+
+Best validation AP after APLoss fine-tuning:
+ walk | APLoss Val AP: 0.996938
+  bus | APLoss Val AP: 0.935377
+  car | APLoss Val AP: 0.968325
+
+Per-class classification metrics:
+ walk | Precision=0.970074 | Recall=0.935650 | F1=0.952551 | One-vs-Rest Accuracy=0.948089 | Support=78990
+  bus | Precision=0.799630 | Recall=0.841593 | F1=0.820075 | One-vs-Rest Accuracy=0.933072 | Support=25706
+  car | Precision=0.851054 | Recall=0.884369 | F1=0.867392 | One-vs-Rest Accuracy=0.929188 | Support=37144
+
+Confusion Matrix [rows=true, cols=pred]:
+[[73907  2352  2731]
+ [ 1054 21634  3018]
+ [ 1226  3069 32849]]
+
+TP / FP / FN / TN per class:
+ walk | TP=73907 | FP=2280 | FN=5083 | TN=60570 | Support=78990
+  bus | TP=21634 | FP=5421 | FN=4072 | TN=110713 | Support=25706
+  car | TP=32849 | FP=5749 | FN=4295 | TN=98947 | Support=37144
+
+Training time (seconds):
+ walk | BCE=448.51 | APLoss/SOAP=1504.86
+  bus | BCE=460.88 | APLoss/SOAP=899.60
+  car | BCE=449.21 | APLoss/SOAP=734.49

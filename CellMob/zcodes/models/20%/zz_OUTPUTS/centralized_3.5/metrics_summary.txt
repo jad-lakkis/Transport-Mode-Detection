@@ -1,0 +1,44 @@
+==================== RESULTS ====================
+Class weights used: [0.59895259141922, 1.835042119026184, 1.2731196880340576]
+Overall Accuracy: 0.870946
+Macro Precision: 0.833983
+Macro Recall: 0.856949
+Macro F1-score: 0.841312
+Macro AP / Macro AUPRC: 0.934063
+
+Per-class classification metrics:
+ walk | Precision=0.956033 | Recall=0.909254 | F1=0.932057 | One-vs-Rest Accuracy=0.926177 | Support=78990
+  bus | Precision=0.692922 | Recall=0.874737 | F1=0.773286 | One-vs-Rest Accuracy=0.907043 | Support=25706
+  car | Precision=0.852994 | Recall=0.786857 | F1=0.818592 | One-vs-Rest Accuracy=0.908672 | Support=37144
+
+AP / AUPRC per class:
+ walk | AP: 0.988486
+  bus | AP: 0.889624
+  car | AP: 0.924077
+
+Confusion Matrix [rows=true, cols=pred]:
+[[71822  4071  3097]
+ [ 1280 22486  1940]
+ [ 2023  5894 29227]]
+
+TP / FP / FN / TN per class:
+ walk | TP=71822 | FP=3303 | FN=7168 | TN=59547 | Support=78990
+  bus | TP=22486 | FP=9965 | FN=3220 | TN=106169 | Support=25706
+  car | TP=29227 | FP=5037 | FN=7917 | TN=99659 | Support=37144
+
+Training loss per epoch:
+Epoch 01: 0.682982
+Epoch 02: 0.441431
+Epoch 03: 0.384901
+Epoch 04: 0.353298
+Epoch 05: 0.331512
+Epoch 06: 0.314604
+Epoch 07: 0.301123
+Epoch 08: 0.290858
+Epoch 09: 0.280329
+Epoch 10: 0.272385
+Epoch 11: 0.265275
+Epoch 12: 0.259516
+Epoch 13: 0.253745
+Epoch 14: 0.248564
+Epoch 15: 0.244484
