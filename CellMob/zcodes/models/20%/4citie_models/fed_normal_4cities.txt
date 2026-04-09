@@ -1,0 +1,21 @@
+==================== FEDERATED RESULTS ====================
+Overall Accuracy: 0.579278
+Macro Precision: 0.501089
+Macro Recall: 0.478070
+Macro F1-score: 0.482090
+Macro AP / Macro AUPRC: 0.543102
+
+Per-class metrics:
+ walk | Precision=0.699849 | Recall=0.781452 | F1=0.738403 | Support=79296
+  bus | Precision=0.228172 | Recall=0.267058 | F1=0.246088 | Support=25706
+  car | Precision=0.575246 | Recall=0.385700 | F1=0.461779 | Support=41356
+
+AP / AUPRC per class:
+ walk | AP: 0.819502
+  bus | AP: 0.243039
+  car | AP: 0.566763
+
+Confusion Matrix [rows=true, cols=pred]:
+[[61966 11842  5488]
+ [12551  6865  6290]
+ [14025 11380 15951]]
